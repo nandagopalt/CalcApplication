@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.amalwin.calcapplication.CalcViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calculate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/radius"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="Radius"
+            android:inputType="number"
+            android:text="@={myViewModel.radius}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.412"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+        <Button
+            android:id="@+id/calculate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="584dp"
+            android:onClick="@{()->myViewModel.calculate()}"
+            android:text="Calculate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/radius"
+            app:layout_constraintStart_toStartOf="@+id/radius"
+            app:layout_constraintTop_toBottomOf="@+id/radius"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/area_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:text="Area"
+            android:textColor="#3C3232"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/area"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/area"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{myViewModel.areaValue.toString()}"
+            android:textColor="#F44336"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.293"
+            app:layout_constraintStart_toEndOf="@+id/area_label"
+            app:layout_constraintTop_toBottomOf="@+id/calculate_button"
+            app:layout_constraintVertical_bias="0.102" />
+
+        <TextView
+            android:id="@+id/circumference_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Circumeference"
+            android:textColor="#3C3232"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/circumference"
+            app:layout_constraintEnd_toEndOf="@+id/area_label"
+            app:layout_constraintStart_toStartOf="@+id/radius"
+            app:layout_constraintTop_toTopOf="@+id/circumference" />
+
+        <TextView
+            android:id="@+id/circumference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:text="@{myViewModel.circumferenceValue.toString()}"
+            android:textColor="#F44336"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/area"
+            app:layout_constraintStart_toStartOf="@+id/area"
+            app:layout_constraintTop_toBottomOf="@+id/area_label" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
